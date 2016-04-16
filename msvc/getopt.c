@@ -70,6 +70,12 @@ getopt(int nargc, char * const *nargv, const char *ostr)
 			place = EMSG;
 			return -1;
 		}
+		
+		if (optind == nargc || *(place = nargv[optind]) != '-')
+		{
+			return -1;
+		}
+		
 		if (place[1] && *++place == '-' && place[1] == '\0')
 		{						/* found "--" */
 			++optind;
